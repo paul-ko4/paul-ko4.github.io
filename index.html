@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .growing-button {
+            font-size: 30px;
+            background-color: green;
+            color: black;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            border: 3px solid;
+            margin: auto;
+           
+            padding: 10px;
+        }
+
+        .normal-button {
+            font-size: 30px;
+            background-color: red;
+            color: black;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            border: 3px solid;
+            margin: auto;
+           
+            padding: 10px;
+        }
+
+        #nope_button {
+            position: relative;
+            left: 120px; /* Adjust the distance between buttons */
+            top: -61px;
+        }
+
+        #yessir_button {
+            position: absolute;
+            top: 55%;
+            left: 55%; /* Center horizontally */
+            transform: translate(-50%, -50%);
+        }
+
+        #header {
+            width: 500px;
+
+            position: relative;
+            left: -120px; /* Adjust the distance between buttons */
+            top: -350px;
+            color: black;
+            font-family:Verdana, Geneva, Tahoma, sans-serif
+        }
+        
+
+    </style>
+    
+    <title> VALENTINES DAY</title>
+</head>
+<body background="pictures/background.jpg">
+    
+    <div id="yessir_button">
+        <a href="valentines_day_yes.html"> 
+        <button id="yes_button" class="growing-button">YES</button>
+        </a>          
+        <div id="nope_button">
+            <button id="no_button" class="normal-button" onclick="changePositions()" >NO</button>
+        </div>
+        <div>
+            <h1 id="header">Will you be my valentine?</h1>
+        </div>
+    </div>
+
+
+    <script type ="text/javascript">
+        function visitPage(){
+                window.location='valentines_day_yes.html'; 
+        }
+        let clicks = 0;
+           
+        let numbers = [];
+        for(let i = -300; i <= 300; i++) {
+            if(i !== 0) {
+            numbers.push(i);
+        }
+        }
+        
+        
+        function changePositions() {
+            
+            if (clicks <= 5) {
+
+                let new_top = numbers[Math.floor(Math.random() * 600 )] + "px";
+                let new_left = numbers[Math.floor(Math.random() * 600 )] + "px";
+                document.getElementById("nope_button").style.top = new_top;
+                document.getElementById("nope_button").style.left = new_left;
+                clicks += 1;
+                document.getElementById("clicks").innerHTML = clicks;
+            }
+            else {
+                document.getElementById("no_button").innerHTML = "YES";
+                document.getElementById("no_button").style.backgroundColor = "green";
+                document.getElementById("nope_button").style = "top: -61px; left: 120px;"
+                document.getElementById("no_button").setAttribute( "onClick", "javascript: visitPage() ;" );
+        }
+    }
+    </script>
+  
+            
+              
+      
+</body>
+
+</html>
